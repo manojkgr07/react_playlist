@@ -1,11 +1,16 @@
 // reducers.js
 import { combineReducers } from '@reduxjs/toolkit';
-import tripReducer from './createSlice';
+
+import testReducer from './TestReducer';
 // Import other reducers
 
 const rootReducer = combineReducers({
-    trip:tripReducer
+
+    testval:testReducer
   // Other reducers go here
 });
 
 export default rootReducer;
+
+
+

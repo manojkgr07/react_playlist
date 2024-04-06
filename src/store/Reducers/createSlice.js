@@ -52,5 +52,5 @@ const tripSlice = createSlice({
 });
 
 
-export const { addTrip ,editTrip} = tripSlice.actions;
+
 export default tripSlice.reducer;

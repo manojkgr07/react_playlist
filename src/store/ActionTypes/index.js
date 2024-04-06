@@ -1,0 +1,1 @@
+export const TEST_VALUE = 'TEST_VALUE';
