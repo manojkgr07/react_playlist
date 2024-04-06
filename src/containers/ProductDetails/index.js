@@ -1,9 +1,9 @@
 import React from "react";
-import ProductScreen from "./screen";
+import ProductDetailsScreen from "./screen";
 import { connect } from "react-redux";
 
 
-class ProductList extends React.Component{
+class ProductDetails extends React.Component{
 
     constructor(props){
         super(props);
@@ -32,10 +32,6 @@ class ProductList extends React.Component{
 
     componentDidMount(){}
 
-    productsHandler = () =>{
-        this.props.navigation.navigate('ProductDetails');
-    }
-
     searchHandler = value =>{
         this.setState({
             searchText:value
@@ -45,11 +41,8 @@ class ProductList extends React.Component{
 
     render(){
         return(
-            <ProductScreen 
-            searchText={this.state.searchText} 
-            searchHandler={this.searchHandler}
-            testjson={this.state.sampjson}
-            productsHandler={this.productsHandler}
+            <ProductDetailsScreen 
+           
             />
         );
     }
@@ -70,4 +63,4 @@ return{
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(ProductList);
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetails);
