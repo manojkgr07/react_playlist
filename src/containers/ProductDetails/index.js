@@ -9,6 +9,7 @@ class ProductDetails extends React.Component{
         super(props);
         this.state={
             searchText:'',
+            productDet:this.props.route.params.productItem,
             sampjson:[
                 {"id":1,
                 "title":"iPhone 9",
@@ -26,11 +27,19 @@ class ProductDetails extends React.Component{
                     "https://cdn.dummyjson.com/product-images/1/4.jpg",
                     "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
                 ]}
-            ]
+            ],
+            sliderimg:[]
         }
     }
 
-    componentDidMount(){}
+    componentDidMount(){
+        
+        console.log("checking array***********");
+        console.log(this.state.productDet);
+        this.setState({
+            sliderimg:this.state.productDet.images
+        });
+    }
 
     searchHandler = value =>{
         this.setState({
@@ -38,11 +47,20 @@ class ProductDetails extends React.Component{
         });
     }
 
+    backHandler = () =>{
+        this.props.navigation.navigate('ProductList');
+    }
+
+    onChange = (nativeElemet) =>{}
+
 
     render(){
         return(
             <ProductDetailsScreen 
-           
+                testjson = {this.state.sliderimg}
+                onChange ={this.onChange}
+                prodjson = {this.state.productDet}
+                backHandler={this.backHandler}
             />
         );
     }

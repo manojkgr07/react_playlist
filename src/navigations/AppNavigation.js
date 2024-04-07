@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from "../containers/LoginScreen";
 import ProductList from "../containers/ProductScreen";
 import ProductDetails from "../containers/ProductDetails";
+import ProfileScreen from "../containers/ProfileScreen";
 
 const AppStack = createStackNavigator();
 
@@ -22,6 +23,11 @@ export default function AppNav() {
 
             <AppStack.Screen name="ProductDetails"
                 component={ProductDetails}
+                options={{ headerShown: false }}
+            />
+
+            <AppStack.Screen name="Profile"
+                component={ProfileScreen}
                 options={{ headerShown: false }}
             />
         </AppStack.Navigator>

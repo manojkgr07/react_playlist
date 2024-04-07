@@ -1,18 +1,38 @@
 import React from "react";
 
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View,Modal } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { TextInput } from "react-native-gesture-handler";
 
-function LoginScreen({checkvalue,username,password,userHandler,passHandler,loginHandler}){
+function LoginScreen({checkvalue,username,password,userHandler,passHandler,loginHandler,errormsg,toggleModal,isVisible}){
     return(
         <SafeAreaView style= {styles.container}>
             <View style={styles.headerContainer}>
                 <Text style = {styles.loginText}>Login</Text>
             </View>
+
+            <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isVisible}
+       onRequestClose={()=>toggleModal(false)}
+      >
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+          <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
+            <View style={{paddingTop:hp('2%')}}>
+            <Text style={{color:"black",fontSize:15,fontWeight:"bold"}}>{errormsg}</Text>
+            </View>
+           
+            <View style={{paddingTop:hp('3%')}}>
+            <Button title="Close" onPress={()=>toggleModal(false)}/>
+            </View>
+            
+          </View>
+        </View>
+      </Modal>
 
             <View style={styles.usertextFieldContainer}>
                 <TextInput 
@@ -20,7 +40,7 @@ function LoginScreen({checkvalue,username,password,userHandler,passHandler,login
                 placeholder="Username"
                 placeholderTextColor="white"
                 value={username}
-                onChangeText={()=>userHandler()}
+                onChangeText={(value)=>userHandler(value)}
                 />
             </View>
 
@@ -30,7 +50,7 @@ function LoginScreen({checkvalue,username,password,userHandler,passHandler,login
                 placeholder="Password"
                 placeholderTextColor="white"
                 value={password}
-                onChangeText={()=>passHandler()}
+                onChangeText={(value)=>passHandler(value)}
                 />
             </View>
 
